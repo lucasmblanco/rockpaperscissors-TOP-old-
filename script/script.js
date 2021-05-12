@@ -3,6 +3,7 @@ let options = ["Rock", "Paper", "Scissors"];
 let computerChoice;
 let playerChoice;
 let result;
+let error = "Not an Option";
 
 // Funcion que permite a la pc elegir una opcion al azar
 function computerPlay() {
@@ -16,8 +17,10 @@ function playerSelection() {
         playerChoice = optionUser;
     } else if (optionUser === options[1]) {
         playerChoice = optionUser;
-    } else {
+    } else if (optionUser === options[2]) {
         playerChoice = optionUser;
+    } else {
+        playerChoice = "Not an Option";
     }
 }
 
@@ -60,5 +63,9 @@ function game(){
     computerPlay();
     playerSelection();
     whoWins();
+    if (playerChoice === error) {
+        return alert("Not a valid option!");
+    } else {
     return `${result}. The pc choose ${computerChoice} and you ${playerChoice}`;
+    }
 }
