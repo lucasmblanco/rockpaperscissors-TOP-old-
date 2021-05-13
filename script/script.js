@@ -58,6 +58,24 @@ function whoWins() {
     }
 }
 
+
+function totalScore() {
+    let scorePc;
+    let scoreUser;
+    if(result === "It's a tie") {
+        scorePc = 0;
+        scoreUser = 0; 
+        return `The Score is PC: ${scorePc} and User: ${scoreUser}`;
+    } else if (result === "You Won!") {
+        scorePc = 0;
+        scoreUser = 1;
+        return `The Score is PC: ${scorePc} and User: ${scoreUser}`;
+    } else if (result === "You Lose!") {
+        scorePc = 1;
+        scoreUser = 0;
+        return `The Score is PC: ${scorePc} and User: ${scoreUser}`;
+    }
+}
 //Funcion que ejecuta el juego 
 function game(){
     computerPlay();
@@ -66,6 +84,6 @@ function game(){
     if (playerChoice === error) {
         return alert("Not a valid option!");
     } else {
-    return `${result}. The pc choose ${computerChoice} and you ${playerChoice}`;
+        return `${result}. The pc choose ${computerChoice} and you ${playerChoice}`;
     }
 }
