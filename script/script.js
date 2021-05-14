@@ -24,11 +24,12 @@ function playerSelection() {
     }
 }
 
+let tie = "It's a tie";
+let victory = "You Won!";
+let defeat = "You Lose!";
+
 //Funcion que con los resultados anteriores elige el ganador
 function whoWins() {
-    let tie = "It's a tie";
-    let victory = "You Won!";
-    let defeat = "You Lose!";
     if (playerChoice === "Rock" && computerChoice === "Rock") {
         result = tie;
         return result;
@@ -60,26 +61,15 @@ function whoWins() {
 
 let finalTotalScoreA;
 let finalFraseA;
-let scorePc;
-let scoreUser;
+let scorePc = 0;
+let scoreUser = 0;
 
 function totalScore() {
-    if(result === "It's a tie") {
-        scorePc = 0;
-        scoreUser = 0; 
-        finalTotalScoreA = `The Score is PC: ${scorePc} and User: ${scoreUser}`;
-        return `The Score is PC: ${scorePc} and User: ${scoreUser}`;
-    } else if (result === "You Won!") {
-        scorePc = 0;
-        scoreUser = 1;
-        finalTotalScoreA = `The Score is PC: ${scorePc} and User: ${scoreUser}`;
-        return `The Score is PC: ${scorePc} and User: ${scoreUser}`;
-    } else if (result === "You Lose!") {
-        scorePc = 1;
-        scoreUser = 0;
-        finalTotalScoreA = `The Score is PC: ${scorePc} and User: ${scoreUser}`;
-        return `The Score is PC: ${scorePc} and User: ${scoreUser}`;
-    }
+    if(result === victory) {
+        scoreUser++;
+    } else if (result === defeat) {
+        scorePc++;
+    } 
 }
 
 
@@ -95,7 +85,17 @@ function finalResult () {
 //Funcion que ejecuta el juego 
 function game() {
     let matchResult;
-    let matchScore;
+    computerPlay();
+    playerSelection();
+    if (playerChoice === error) {
+        return 'Opcion no valida, volver a empezar!';
+    } else {
+    whoWins();
+    finalResult();
+    totalScore();
+    matchResult = finalFraseA;
+    matchScore = finalTotalScoreA;
+    alert(matchResult);
     computerPlay();
     playerSelection();
     whoWins();
@@ -104,30 +104,37 @@ function game() {
     matchResult = finalFraseA;
     matchScore = finalTotalScoreA;
     alert(matchResult);
-    alert(matchScore);
     computerPlay();
     playerSelection();
     whoWins();
     finalResult();
     totalScore();
-    if (result === "You Won!") {
-        scoreUser++;
-    } else if (result === "You Lose!") {
-        scorePc++;
-    };
+    matchResult = finalFraseA;
+    matchScore = finalTotalScoreA;
     alert(matchResult);
-    alert(matchScore);
     computerPlay();
     playerSelection();
     whoWins();
     finalResult();
     totalScore();
-    if (result === "You Won!") {
-        scoreUser++;
-    } else if (result === "You Lose!") {
-        scorePc++;
-    };
+    matchResult = finalFraseA;
+    matchScore = finalTotalScoreA;
     alert(matchResult);
-    alert(matchScore);
-    //return {matchResult, matchScore}
+    computerPlay();
+    playerSelection();
+    whoWins();
+    finalResult();
+    totalScore();
+    matchResult = finalFraseA;
+    matchScore = finalTotalScoreA;
+    alert(matchResult);
+    return `The match results are PC:${scorePc} and USER:${scoreUser}`;
+  
+    }  //return {matchResult, matchScore}
+}
+
+function newGame() {
+    scorePc = 0;
+    scoreUser = 0;
+    return "Escribe game() para jugar!."
 }
