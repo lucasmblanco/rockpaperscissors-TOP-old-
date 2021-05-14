@@ -58,32 +58,76 @@ function whoWins() {
     }
 }
 
+let finalTotalScoreA;
+let finalFraseA;
+let scorePc;
+let scoreUser;
 
 function totalScore() {
-    let scorePc;
-    let scoreUser;
     if(result === "It's a tie") {
         scorePc = 0;
         scoreUser = 0; 
+        finalTotalScoreA = `The Score is PC: ${scorePc} and User: ${scoreUser}`;
         return `The Score is PC: ${scorePc} and User: ${scoreUser}`;
     } else if (result === "You Won!") {
         scorePc = 0;
         scoreUser = 1;
+        finalTotalScoreA = `The Score is PC: ${scorePc} and User: ${scoreUser}`;
         return `The Score is PC: ${scorePc} and User: ${scoreUser}`;
     } else if (result === "You Lose!") {
         scorePc = 1;
         scoreUser = 0;
+        finalTotalScoreA = `The Score is PC: ${scorePc} and User: ${scoreUser}`;
         return `The Score is PC: ${scorePc} and User: ${scoreUser}`;
     }
 }
+
+
+function finalResult () {
+         if (playerChoice === error) {
+             finalFraseA = alert("Not a valid option!");
+            return alert("Not a valid option!");
+        } else {
+            finalFraseA = `${result}. The pc choose ${computerChoice} and you ${playerChoice}`;
+            return `${result}. The pc choose ${computerChoice} and you ${playerChoice}`;
+        }
+}
 //Funcion que ejecuta el juego 
-function game(){
+function game() {
+    let matchResult;
+    let matchScore;
     computerPlay();
     playerSelection();
     whoWins();
-    if (playerChoice === error) {
-        return alert("Not a valid option!");
-    } else {
-        return `${result}. The pc choose ${computerChoice} and you ${playerChoice}`;
-    }
+    finalResult();
+    totalScore();
+    matchResult = finalFraseA;
+    matchScore = finalTotalScoreA;
+    alert(matchResult);
+    alert(matchScore);
+    computerPlay();
+    playerSelection();
+    whoWins();
+    finalResult();
+    totalScore();
+    if (result === "You Won!") {
+        scoreUser++;
+    } else if (result === "You Lose!") {
+        scorePc++;
+    };
+    alert(matchResult);
+    alert(matchScore);
+    computerPlay();
+    playerSelection();
+    whoWins();
+    finalResult();
+    totalScore();
+    if (result === "You Won!") {
+        scoreUser++;
+    } else if (result === "You Lose!") {
+        scorePc++;
+    };
+    alert(matchResult);
+    alert(matchScore);
+    //return {matchResult, matchScore}
 }
