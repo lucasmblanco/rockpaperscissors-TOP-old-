@@ -38,6 +38,7 @@ function whoWins() {
         return result;
     } else if (playerChoice === "Rock" && computerChoice === "Scissors") {
         result = victory;
+        return result;
     } else if (playerChoice === "Paper" && computerChoice === "Paper") {
         result = tie;
         return result;
